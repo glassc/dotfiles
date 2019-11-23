@@ -1,6 +1,2 @@
 2gua.rainbow-brackets
-monokai.theme-monokai-pro-vscode
-ms-vscode.csharp
-ms-vscode.PowerShell
 ms-vscode.resharper9-keybindings
-VisualStudioExptTeam.vscodeintellicode
