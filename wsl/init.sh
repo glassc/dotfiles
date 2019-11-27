@@ -47,3 +47,7 @@ sudo usermod -aG docker $USER
 sudo add-apt-repository ppa:git-core/ppa -y
 sudo apt-get update -y
 sudo apt install git -y
+git config --global pull.rebase true
+
+# Directory Colors
+cp .dir_colors ~/

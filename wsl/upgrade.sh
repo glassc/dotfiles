@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt update -y
-sudo apt full-upgrade -y
-sudo apt autoremove -y
-sudo apt autoclean -y 
+sudo apt update --yes --force-yes
+sudo apt full-upgrade --yes --force-yes
+sudo apt autoremove --yes --force-yes
+sudo apt autoclean --yes --force-yes
