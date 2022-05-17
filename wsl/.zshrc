@@ -1,6 +1,6 @@
 # Test
 # Executes commands at the start of an interactive session.
-#
+#a
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
