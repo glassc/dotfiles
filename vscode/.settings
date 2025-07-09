@@ -1,8 +1,0 @@
-{
-    "workbench.sideBar.location": "right",
-    "files.autoSave": "afterDelay",
-    "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true,
-    "editor.minimap.enabled": false,
-    "git.enableSmartCommit": true
-}

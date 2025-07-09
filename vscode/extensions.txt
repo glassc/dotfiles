@@ -1,2 +1,0 @@
-2gua.rainbow-brackets
-ms-vscode.resharper9-keybindings

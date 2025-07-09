@@ -1,0 +1,28 @@
+{
+  "name": "Claude Code Sandbox",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "TZ": "${localEnv:TZ:America/Edmonton}"
+    }
+  },
+  "features": {
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
+},
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "zsh"
+          }
+        }
+      }
+    }
+  },
+  "remoteUser": "vscode"
+}
