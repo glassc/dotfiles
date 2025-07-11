@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chris Glass - Dotfiles PPA</title>
+    <style>
+        :root {
+            --bg-color: #2e3440;
+            --surface-color: #3b4252;
+            --primary-color: #5e81ac;
+            --accent-color: #88c0d0;
+            --text-color: #eceff4;
+            --text-muted: #d8dee9;
+            --border-color: #4c566a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        .section {
+            background: var(--surface-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .install-steps {
+            counter-reset: step-counter;
+        }
+
+        .step {
+            counter-increment: step-counter;
+            margin-bottom: 1.5rem;
+            padding-left: 3rem;
+            position: relative;
+        }
+
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--primary-color);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .code-block {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            color: var(--accent-color);
+        }
+
+        .package-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .package-item {
+            background: var(--bg-color);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .package-name {
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .package-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .warning {
+            background: rgba(235, 203, 139, 0.1);
+            border: 1px solid #ebcb8b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: #ebcb8b;
+        }
+
+        .warning::before {
+            content: "⚠️ ";
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Dotfiles PPA</h1>
+            <p class="subtitle">Personal development environment meta-package for Debian/Ubuntu systems</p>
+        </header>
+
+        <div class="section">
+            <h2>🚀 Quick Installation</h2>
+            <div class="install-steps">
+                <div class="step">
+                    <strong>Add the repository key:</strong>
+                    <div class="code-block">curl -fsSL https://dotfiles.chrisglass.dev/KEY.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/chrisglass-dotfiles.gpg</div>
+                </div>
+                
+                <div class="step">
+                    <strong>Add the repository:</strong>
+                    <div class="code-block">echo "deb [signed-by=/etc/apt/trusted.gpg.d/chrisglass-dotfiles.gpg] https://dotfiles.chrisglass.dev/packages/debian/ stable main" | sudo tee /etc/apt/sources.list.d/chrisglass-dotfiles.list</div>
+                </div>
+                
+                <div class="step">
+                    <strong>Update and install:</strong>
+                    <div class="code-block">sudo apt update && sudo apt install cglass-devenv</div>
+                </div>
+            </div>
+
+            <div class="warning">
+                This PPA is designed for personal use and development environments. Review the included packages before installation.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📦 What's Included</h2>
+            <p>This meta-package installs essential development tools and command-line utilities:</p>
+            
+            <div class="package-list">
+                <div class="package-item">
+                    <div class="package-name">zsh</div>
+                    <div class="package-desc">Extended shell with advanced features</div>
+                </div>
+                <div class="package-item">
+                    <div class="package-name">starship</div>
+                    <div class="package-desc">Cross-shell prompt (recommended)</div>
+                </div>
+                <div class="package-item">
+                    <div class="package-name">gh</div>
+                    <div class="package-desc">GitHub CLI tool</div>
+                </div>
+                <div class="package-item">
+                    <div class="package-name">git</div>
+                    <div class="package-desc">Distributed version control</div>
+                </div>
+                <div class="package-item">
+                    <div class="package-name">curl</div>
+                    <div class="package-desc">Data transfer tool</div>
+                </div>
+                <div class="package-item">
+                    <div class="package-name">nano</div>
+                    <div class="package-desc">Simple text editor</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🛠️ How It Works</h2>
+            <p>This repository uses a fully automated build system:</p>
+            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                <li><strong>Source:</strong> Debian package configuration in <code>packages/debian/</code></li>
+                <li><strong>Build:</strong> GitHub Actions automatically builds and signs packages on push</li>
+                <li><strong>Distribution:</strong> Packages are served via GitHub Pages with proper APT repository structure</li>
+                <li><strong>Security:</strong> All packages are GPG signed for integrity verification</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🔧 Configuration</h2>
+            <p>After installing the meta-package, you can set up the accompanying dotfiles:</p>
+            <div class="code-block">git clone https://github.com/chrisglass/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+./install.sh</div>
+        </div>
+
+        <div class="footer">
+            <p>Built with ❤️ by <a href="https://chrisglass.dev">Chris Glass</a></p>
+            <p><a href="https://github.com/chrisglass/dotfiles">View on GitHub</a> | <a href="https://github.com/chrisglass/dotfiles/issues">Report Issues</a></p>
+        </div>
+    </div>
+</body>
+</html>

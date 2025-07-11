@@ -1,0 +1,7 @@
+cglass-devenv (1.0.0-1) unstable; urgency=medium
+
+  * Initial release of dotfiles meta-package
+  * Includes essential development tools: zsh, gh, nano, curl, sudo, git, ca-certificates
+  * Recommends starship for enhanced shell prompt
+
+ -- Dotfiles Maintainer <dotfiles@example.com>  Fri, 11 Jul 2025 00:00:00 +0000

@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_install:
+	# Meta-package has no files to install
+
+override_dh_auto_build:
+	# Meta-package has nothing to build
+
+override_dh_auto_test:
+	# Meta-package has no tests

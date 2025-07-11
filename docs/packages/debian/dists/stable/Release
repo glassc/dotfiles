@@ -1,0 +1,9 @@
+Origin: Chris Glass Dotfiles
+Label: chrisglass-dotfiles
+Suite: stable
+Codename: stable
+Version: 1.0
+Architectures: all amd64
+Components: main
+Description: Personal dotfiles meta-package repository
+Date: Thu, 11 Jul 2025 00:00:00 UTC

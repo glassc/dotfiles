@@ -1,0 +1,46 @@
+name: Build Debian Package
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+  release:
+    types: [ published ]
+
+jobs:
+  build-deb:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Install build dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y debhelper devscripts build-essential
+        
+    - name: Build Debian package
+      uses: jtdor/build-deb-action@v1
+      with:
+        package: dotfiles-meta
+        package_root: packages/debian
+        buildpackage_opts: --unsigned-source --unsigned-changes --build=binary
+        
+    - name: List generated files
+      run: ls -la
+      
+    - name: Upload package as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: dotfiles-meta-deb
+        path: "*.deb"
+        retention-days: 30
+        
+    - name: Release package
+      if: github.event_name == 'release'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: "*.deb"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

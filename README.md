@@ -8,6 +8,7 @@ Personal dotfiles with shell configurations and development tools.
 - **Starship Prompt**: Modern, fast prompt with git integration
 - **Color Scheme**: Nord color scheme for terminal applications
 - **XDG Base Directory**: Organized configuration following XDG standards
+- **Meta Package**: Automated Debian package for essential development tools
 
 ## Installation
 
@@ -76,46 +77,51 @@ Personal dotfiles with shell configurations and development tools.
 
 The `install.sh` script:
 - Creates XDG Base Directory structure (`~/.config`, `~/.local/share`, `~/.cache`)
-- Symlinks configuration files from each directory to `~/.config/`
+- Symlinks configuration files from `config/` subdirectories to `~/.config/`
 - Files with `.home` extension are symlinked to `$HOME` instead (e.g., `.zshenv.home` → `$HOME/.zshenv`)
 - Preserves existing configurations by backing them up
 - Supports easy updates by re-running the script
-- Uses `.dotfilesIgnore` to skip directories and files during installation
 
 ## Configuration Details
 
-- **Zsh**: Configurations in `zsh/` directory
+- **Zsh**: Configurations in `config/zsh/` directory
   - `config.zsh`: Environment variables and XDG paths
   - `alias.zsh`: Custom aliases
   - `history.zsh`: History configuration with Atuin integration
   - `nord.dircolors`: Nord color scheme for `ls`
-- **Starship**: Prompt configuration in `starship/starship.toml`
-- **Claude**: Claude Code settings in `claude/settings.json`
+- **Starship**: Prompt configuration in `config/starship/starship.toml`
+- **Claude**: Claude Code settings in `config/claude/settings.json`
 
-## Installation Control
+## Meta Package
 
-The `.dotfilesIgnore` file allows you to specify directories and files that should be skipped during installation:
+The repository includes a Debian meta-package that automatically installs essential development tools:
 
+### Included Tools
+- `zsh`: Extended shell with advanced features
+- `gh`: GitHub CLI tool
+- `nano`: Simple text editor  
+- `curl`: Command-line tool for transferring data
+- `sudo`: Execute commands as another user
+- `git`: Distributed version control system
+- `ca-certificates`: Common CA certificates
+- `starship`: Cross-shell prompt (recommended)
+
+### Installation
+
+#### Download from Releases
+1. Go to the [Releases page](../../releases)
+2. Download the latest `cglass-devenv_*.deb` file
+3. Install with: `sudo dpkg -i cglass-devenv_*.deb`
+
+#### Build Locally
+```bash
+cd packages/debian
+./build-package.sh
+sudo dpkg -i ../../cglass-devenv_*.deb
 ```
-# Directories to ignore during installation
-.devcontainer/
-.git/
-.github/
-node_modules/
-.vscode/
-.idea/
 
-# Files to ignore
-*.log
-*.tmp
-.DS_Store
-README.md
-install.sh
-.gitignore
-.dotfilesIgnore
-```
+The package is automatically built and released when changes are pushed to the main branch.
 
-The installation script will read this file and skip any directories or files that match the patterns listed.
 
 ## Updating
 

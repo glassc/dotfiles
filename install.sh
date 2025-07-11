@@ -14,37 +14,9 @@ mkdir -p "$XDG_DATA_HOME" && chmod 755 "$XDG_DATA_HOME" && chown "$USER:$USER" "
 # Get the script directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Function to check if a directory should be ignored
-should_ignore() {
-    local dir_name="$1"
-    local ignore_file="$SCRIPT_DIR/.dotfilesIgnore"
-
-    # Check if directory matches any pattern in .dotfilesIgnore
-    while IFS= read -r pattern; do
-        # Skip empty lines and comments
-        [[ -z "$pattern" ]] && continue
-        [[ "$pattern" =~ ^[[:space:]]*# ]] && continue
-        
-        # Remove trailing slash for comparison
-        pattern="${pattern%/}"
-        
-        # Check if directory matches pattern
-        if [[ "$dir_name" == $pattern ]]; then
-            return 0
-        fi
-    done < "$ignore_file"
-    
-    return 1
-}
-
 # Link individual files from each directory to $XDG_CONFIG_HOME
-for dir in "$SCRIPT_DIR"/*/; do
+for dir in "$SCRIPT_DIR"/config/*/; do
     dir_name=$(basename "$dir")
-    
-    # Skip ignored directories
-    if should_ignore "$dir_name"; then
-        continue
-    fi
     
     target_dir="$XDG_CONFIG_HOME/$dir_name"
     
