@@ -44,24 +44,11 @@ Personal dotfiles with shell configurations and development tools.
    ./install.sh
    ```
 
-3. Install required dependencies:
-   - **Zsh**: Your shell (usually pre-installed on macOS/Linux)
-   - **Starship**: Cross-shell prompt
-     ```bash
-     # macOS
-     brew install starship
-     
-     # Linux
-     curl -sS https://starship.rs/install.sh | sh
-     ```
-   - **Atuin**: Shell history replacement (optional)
-     ```bash
-     # macOS
-     brew install atuin
-     
-     # Linux
-     curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | sh
-     ```
+3. Install the development tools meta-package (optional but recommended):
+   ```bash
+   # Install from the APT repository or GitHub releases
+   # See Meta Package section below for installation instructions
+   ```
 
 4. Set zsh as your default shell (if not already):
    ```bash
