@@ -8,6 +8,6 @@ done
 
 eval `dircolors "${XDG_CONFIG_HOME}/zsh/nord.dircolors"`
 
-
+eval "$(atuin init zsh --disable-up-arrow)"
 
 eval "$(starship init zsh)"

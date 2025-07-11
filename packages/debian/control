@@ -7,15 +7,14 @@ Standards-Version: 4.5.1
 
 Package: cglass-devenv
 Architecture: all
-Depends: zsh, gh, nano, curl, sudo, git, ca-certificates
-Recommends: starship
+Depends: zsh, gh, nano, curl, sudo, git, ca-certificates, starship, atuin
 Description: Meta-package for essential development tools
  This meta-package installs a collection of essential development tools
  and command-line utilities commonly used in development environments.
  .
  The package includes:
   - zsh: Extended shell with advanced features
-  - starship: Cross-shell prompt (recommended)
+  - starship: Cross-shell prompt
   - gh: GitHub CLI tool
   - nano: Simple text editor
   - curl: Command-line tool for transferring data
