@@ -23,9 +23,8 @@ jobs:
     - name: Build Debian package
       uses: jtdor/build-deb-action@v1
       with:
-        package: ${{ vars.DEVENV_PACKAGE_NAME }}
-        package_root: packages/debian
-        buildpackage_opts: --unsigned-source --unsigned-changes --build=binary
+        source-dir: packages/debian
+        buildpackage-opts: --unsigned-source --unsigned-changes --build=binary
         
     - name: List generated files
       run: ls -la
@@ -33,7 +32,7 @@ jobs:
     - name: Upload package as artifact
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ vars.DEVENV_PACKAGE_NAME }}-deb
+        name: cglass-devenv-deb
         path: "*.deb"
         retention-days: 30
         
