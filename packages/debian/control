@@ -1,7 +1,7 @@
 Source: cglass-devenv
 Section: misc
 Priority: optional
-Maintainer: Dotfiles Maintainer <dotfiles@example.com>
+Maintainer: Chris Glass <glassc@users.noreply.github.com>
 Build-Depends: debhelper (>= 12)
 Standards-Version: 4.5.1
 

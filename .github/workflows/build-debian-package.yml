@@ -23,7 +23,7 @@ jobs:
     - name: Build Debian package
       uses: jtdor/build-deb-action@v1
       with:
-        package: dotfiles-meta
+        package: ${{ vars.DEVENV_PACKAGE_NAME }}
         package_root: packages/debian
         buildpackage_opts: --unsigned-source --unsigned-changes --build=binary
         
@@ -33,7 +33,7 @@ jobs:
     - name: Upload package as artifact
       uses: actions/upload-artifact@v4
       with:
-        name: dotfiles-meta-deb
+        name: ${{ vars.DEVENV_PACKAGE_NAME }}-deb
         path: "*.deb"
         retention-days: 30
         
