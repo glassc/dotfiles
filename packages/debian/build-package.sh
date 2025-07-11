@@ -5,18 +5,18 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
-echo "Building $DEVENV_PACKAGE_NAME Debian package..."
+echo "Building cglass-devenv Debian package..."
 
 # Create a temporary build directory
 BUILD_DIR=$(mktemp -d)
 trap "rm -rf $BUILD_DIR" EXIT
 
 # Copy debian files to temporary directory
-mkdir -p "$BUILD_DIR/$DEVENV_PACKAGE_NAME-1.0.0"
-cp -r "$SCRIPT_DIR"/* "$BUILD_DIR/$DEVENV_PACKAGE_NAME-1.0.0/"
+mkdir -p "$BUILD_DIR/cglass-devenv-1.0.0/debian"
+cp -rp "$SCRIPT_DIR"/* "$BUILD_DIR/cglass-devenv-1.0.0/debian/"
 
 # Move to build directory
-cd "$BUILD_DIR/$DEVENV_PACKAGE_NAME-1.0.0"
+cd "$BUILD_DIR/cglass-devenv-1.0.0"
 
 # Build the package
 echo "Running dpkg-buildpackage..."

@@ -3,9 +3,9 @@ name: Build Debian Package
 on:
   push:
     branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
   workflow_dispatch:
-  release:
-    types: [ published ]
 
 jobs:
   build-deb:
@@ -21,10 +21,9 @@ jobs:
         sudo apt-get install -y debhelper devscripts build-essential
         
     - name: Build Debian package
-      uses: jtdor/build-deb-action@v1
-      with:
-        source-dir: packages/debian
-        buildpackage-opts: --unsigned-source --unsigned-changes --build=binary
+      run: |
+        chmod +x packages/debian/build-package.sh
+        packages/debian/build-package.sh
         
     - name: List generated files
       run: ls -la
@@ -35,11 +34,3 @@ jobs:
         name: cglass-devenv-deb
         path: "*.deb"
         retention-days: 30
-        
-    - name: Release package
-      if: github.event_name == 'release'
-      uses: softprops/action-gh-release@v1
-      with:
-        files: "*.deb"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
