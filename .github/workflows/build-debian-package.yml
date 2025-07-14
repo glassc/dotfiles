@@ -18,7 +18,7 @@ jobs:
     - name: Install build dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y debhelper devscripts build-essential
+        sudo apt-get install -y debhelper devscripts build-essential dpkg-dev
         
     - name: Build Debian package
       run: |
@@ -27,6 +27,58 @@ jobs:
         
     - name: List generated files
       run: ls -la
+      
+    - name: Update PPA repository (push only)
+      if: github.event_name == 'push'
+      run: |
+        # Create pool directory structure
+        mkdir -p docs/packages/debian/pool/main/c/cglass-devenv/
+        
+        # Copy package to pool
+        cp *.deb docs/packages/debian/pool/main/c/cglass-devenv/
+        
+        # Generate Packages file
+        cd docs/packages/debian
+        dpkg-scanpackages pool/ /dev/null > dists/stable/main/binary-all/Packages
+        
+        # Compress Packages file
+        gzip -c dists/stable/main/binary-all/Packages > dists/stable/main/binary-all/Packages.gz
+        
+        # Update Release file with current date and checksums
+        cd dists/stable
+        cat > Release << EOF
+        Origin: Chris Glass Dotfiles
+        Label: chrisglass-dotfiles
+        Suite: stable
+        Codename: stable
+        Version: 1.0
+        Architectures: all amd64
+        Components: main
+        Description: Personal dotfiles meta-package repository
+        Date: $(date -u '+%a, %d %b %Y %H:%M:%S UTC')
+        MD5Sum:
+        $(md5sum main/binary-all/Packages | awk '{print " " $1 " " $2 " main/binary-all/Packages"}')
+        $(md5sum main/binary-all/Packages.gz | awk '{print " " $1 " " $2 " main/binary-all/Packages.gz"}')
+        SHA1:
+        $(sha1sum main/binary-all/Packages | awk '{print " " $1 " " $2 " main/binary-all/Packages"}')
+        $(sha1sum main/binary-all/Packages.gz | awk '{print " " $1 " " $2 " main/binary-all/Packages.gz"}')
+        SHA256:
+        $(sha256sum main/binary-all/Packages | awk '{print " " $1 " " $2 " main/binary-all/Packages"}')
+        $(sha256sum main/binary-all/Packages.gz | awk '{print " " $1 " " $2 " main/binary-all/Packages.gz"}')
+        EOF
+        
+    - name: Commit PPA updates (push only)
+      if: github.event_name == 'push'
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add docs/packages/
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Update PPA with package $(basename *.deb)"
+          git push
+        fi
       
     - name: Upload package as artifact
       uses: actions/upload-artifact@v4
