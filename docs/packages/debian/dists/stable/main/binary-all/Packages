@@ -1,2 +1,27 @@
-# This file will be generated automatically by the build process
-# It contains package metadata for all available packages
+Package: cglass-devenv
+Version: 1.0.0-1
+Architecture: all
+Maintainer: Chris Glass <glassc@users.noreply.github.com>
+Installed-Size: 7
+Depends: zsh, gh, nano, curl, sudo, git, ca-certificates, starship, atuin
+Filename: pool/main/c/cglass-devenv/cglass-devenv_1.0.0-1_all.deb
+Size: 1272
+MD5sum: 9044e2e05e6330b0eb4fc3fa587da55f
+SHA1: b344a8ec1f8175224e5758ba3af67d2ea2e5d3da
+SHA256: d5f81848e5561b0f3840e979f096c25f9fb0725fb4f4b4394e29131ce5c7196b
+Section: misc
+Priority: optional
+Description: Meta-package for essential development tools
+ This meta-package installs a collection of essential development tools
+ and command-line utilities commonly used in development environments.
+ .
+ The package includes:
+  - zsh: Extended shell with advanced features
+  - starship: Cross-shell prompt
+  - gh: GitHub CLI tool
+  - nano: Simple text editor
+  - curl: Command-line tool for transferring data
+  - sudo: Execute commands as another user
+  - git: Distributed version control system
+  - ca-certificates: Common CA certificates
+

@@ -6,4 +6,13 @@ Version: 1.0
 Architectures: all amd64
 Components: main
 Description: Personal dotfiles meta-package repository
-Date: Thu, 11 Jul 2025 00:00:00 UTC
+Date: Mon, 14 Jul 2025 04:16:12 UTC
+MD5Sum:
+ 5b71e54fa525c260b8ddd0f16631b38a main/binary-all/Packages main/binary-all/Packages
+ 27e9412e67538f90ecfb2700103c714d main/binary-all/Packages.gz main/binary-all/Packages.gz
+SHA1:
+ 76ab459563a80cb337a3b8b632e59fe8f483013a main/binary-all/Packages main/binary-all/Packages
+ c1eb52e2f7b8d88e0feb0ac2cc4334abbeb1b4bb main/binary-all/Packages.gz main/binary-all/Packages.gz
+SHA256:
+ 0ff4743c707aa567a7e3081e8e86a4ab9582f4331d7a8fa60ea82648b9d35f62 main/binary-all/Packages main/binary-all/Packages
+ e400d93e71d63b971aab135b39de4fcc96cac9b4ddd9fb66684322e9fbf950d8 main/binary-all/Packages.gz main/binary-all/Packages.gz
