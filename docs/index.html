@@ -175,13 +175,13 @@
             <h2>🚀 Quick Installation</h2>
             <div class="install-steps">
                 <div class="step">
-                    <strong>Add the repository key:</strong>
-                    <div class="code-block">curl -fsSL https://dotfiles.chrisglass.dev/KEY.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/chrisglass-dotfiles.gpg</div>
+                    <strong>Download the signing key:</strong>
+                    <div class="code-block">sudo curl -fsSL https://dotfiles.chrisglass.dev/cglass-devenv-keyring.gpg -o /usr/share/keyrings/cglass-devenv-keyring.gpg</div>
                 </div>
                 
                 <div class="step">
                     <strong>Add the repository:</strong>
-                    <div class="code-block">echo "deb [signed-by=/etc/apt/trusted.gpg.d/chrisglass-dotfiles.gpg] https://dotfiles.chrisglass.dev/packages/debian/ stable main" | sudo tee /etc/apt/sources.list.d/chrisglass-dotfiles.list</div>
+                    <div class="code-block">echo "deb [signed-by=/usr/share/keyrings/cglass-devenv-keyring.gpg] https://dotfiles.chrisglass.dev/packages/debian/ stable main" | sudo tee /etc/apt/sources.list.d/chrisglass-dotfiles.list</div>
                 </div>
                 
                 <div class="step">
