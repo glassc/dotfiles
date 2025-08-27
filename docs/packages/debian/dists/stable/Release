@@ -6,13 +6,13 @@ Version: 1.0
 Architectures: all amd64
 Components: main
 Description: Personal dotfiles meta-package repository
-Date: Mon, 14 Jul 2025 05:07:51 UTC
+Date: Wed, 27 Aug 2025 03:20:46 UTC
 MD5Sum:
  5b71e54fa525c260b8ddd0f16631b38a main/binary-all/Packages main/binary-all/Packages
- 2e2d1d88dc746a955e342b066a58c3f0 main/binary-all/Packages.gz main/binary-all/Packages.gz
+ 4229e050b791eb2f69a606df4ffd6d8b main/binary-all/Packages.gz main/binary-all/Packages.gz
 SHA1:
  76ab459563a80cb337a3b8b632e59fe8f483013a main/binary-all/Packages main/binary-all/Packages
- f0b03c3e0cfe3dff954e10e308bfbac138d31dc0 main/binary-all/Packages.gz main/binary-all/Packages.gz
+ ea601db1a46767c0a4ee318a2392968e01a8101d main/binary-all/Packages.gz main/binary-all/Packages.gz
 SHA256:
  0ff4743c707aa567a7e3081e8e86a4ab9582f4331d7a8fa60ea82648b9d35f62 main/binary-all/Packages main/binary-all/Packages
- 9bfd823c8f26c266e86a9c7e250d5c9c194deb49f7f238f1175e59ef8c9c44b2 main/binary-all/Packages.gz main/binary-all/Packages.gz
+ c95815192957fe8f19c45b9d64a2cf393563ec86d7f2e4559edd9473d1b572a4 main/binary-all/Packages.gz main/binary-all/Packages.gz
