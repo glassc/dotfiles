@@ -59,6 +59,8 @@ for dir in "$SCRIPT_DIR"/config/*/; do
     done
 done
 
+ln 
+
 echo "Installation complete!"
 
 if [[ -n "$CODESPACES" ]]; then
